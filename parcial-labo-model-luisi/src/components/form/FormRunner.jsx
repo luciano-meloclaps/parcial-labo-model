@@ -1,9 +1,19 @@
 import React from "react";
 import Buttons from "../buttons/Buttons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FormRunner = () => {
   const [count, setCount] = useState(0);
+  const [error, setError] = useState(false);
+
+  //Validacion: usamos el count para el valor del input
+  const errorMessage = (count) => {
+    if (count > 7 || count < 1) {
+      return <p style={{ color: "red" }}>¡La semana solo tiene 7 días!</p>;
+    } else {
+      return null;
+    }
+  };
 
   return (
     <div>
@@ -14,7 +24,7 @@ const FormRunner = () => {
           id="floatingInput"
           placeholder="name@example.com"
           value={count}
-          onChange={(e) => setCount(parseInt(e.target.value))}
+          onChange={(e) => setCount(e.target.value)}
         ></input>
         <label htmlFor="floatingInput">Dias para correr:</label>
       </div>
@@ -36,6 +46,8 @@ const FormRunner = () => {
           setCount(count - 1);
         }}
       />
+
+      {errorMessage(count)}
     </div>
   );
 };
