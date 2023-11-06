@@ -1,10 +1,9 @@
 import React from "react";
 import Buttons from "../buttons/Buttons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const FormRunner = () => {
   const [count, setCount] = useState(0);
-  const [error, setError] = useState(false);
 
   //Validacion: usamos el count para el valor del input
   const errorMessage = (count) => {
@@ -17,6 +16,7 @@ const FormRunner = () => {
 
   return (
     <div>
+      {" "}
       <div className="form-floating mb-3">
         <input
           type="number"
@@ -46,7 +46,6 @@ const FormRunner = () => {
           setCount(count - 1);
         }}
       />
-
       {errorMessage(count)}
     </div>
   );

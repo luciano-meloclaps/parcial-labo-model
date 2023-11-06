@@ -11,7 +11,7 @@ function App() {
     { code: "GER", name: "Alemania", population: 83200000 },
   ];
 
-  const [optionSelect, setOptionSelect] = useState(null);
+  const [optionSelect, setOptionSelect] = useState("");
 
   const setCountryHandler = (value) => {
     setOptionSelect(value);
@@ -34,15 +34,10 @@ function App() {
       <h1>Parcial</h1>'{/* Pasamos las props*/}
       <CountryForm countrysProp={data} setCountryHandler={setCountryHandler} />
       {/* Ssi el array objetoFilterCountry tiene algún elemento (evitamos el UNDEFINED)*/}
-      {objetoFilterCountry.length > 0 ? (
-        <p>
-          EL PAIS: {objetoFilterCountry[0].name} posee habilitantes:{" "}
-          {objetoFilterCountry[0].population}
-        </p>
-      ) : (
-        // Else
-        <p>No se encontró el país</p>
-      )}
+      <p>
+        EL PAIS: {objetoFilterCountry[0].name} posee habilitantes:{" "}
+        {objetoFilterCountry[0].population}
+      </p>
     </>
   );
 }
